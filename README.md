@@ -20,16 +20,20 @@
 
 ## Self hosting your side projects with Django and duct tape
 
-May 25 2024 @ PyCon Italia
+25 May 2024 @ PyCon Italia
 
 [📖 Slides](https://github.com/anze3db/talks/blob/main/2024-05-25-django-ducktape.pdf) | [📹 Video](https://www.youtube.com/watch?v=SnPVhT-5dMA)
 
 ## Performance and scaling a SaaS web application
 
-May 9 2018 @ require('lx')
+9 May 2018 @ require('lx')
 
-[📖 Slides](https://github.com/anze3db/talks/blob/main/2018-05-2018-perf-saas.pdf) | 📹 Video
+[📖 Slides](https://github.com/anze3db/talks/blob/main/2018-05-2018-perf-saas.pdf)
 
+## Lord of the Async
 
+28 Sep 2017 @ Pixels Camp
+
+[📹 Video](https://www.youtube.com/watch?v=fcZTmGMtK9s)
 
 
