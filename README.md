@@ -1,16 +1,22 @@
 # Talks
 
+## 24 Jul 2025
+
+What's New in Python 3.14 @ Pycon Portugal
+
+📖 Slides | 📹 Video | [🧑‍💻 Code examles](https://github.com/anze3db/python-3.14-examples)
+
 ## 18 Oct 2024
 
 Django, SQLite, and Production @ Pycon Portugal
 
-[📖 Slides](https://github.com/anze3db/talks/blob/main/2024-10-18-django-sqlite-prod.pdf) | 📹 Video
+[📖 Slides](https://github.com/anze3db/talks/blob/main/2024-10-18-django-sqlite-prod.pdf) | [📹 Video](https://www.youtube.com/watch?v=X42YpvfICes)
 
 ## 17 Oct 2024
 
 Self hosting your side projects with Django and duct tape @ PyCon Portugal
 
-[📖 Slides](https://github.com/anze3db/talks/blob/main/2024-10-17-django-ducktape.pdf) | 📹 Video
+[📖 Slides](https://github.com/anze3db/talks/blob/main/2024-10-17-django-ducktape.pdf) | [📹 Video](https://www.youtube.com/watch?v=2d0pLNhmnlA)
 
 ## 7 June 2024
 
