@@ -4,7 +4,7 @@
 
 What's New in Python 3.14 @ Pycon Portugal
 
-📖 Slides | 📹 Video | [🧑‍💻 Code examles](https://github.com/anze3db/python-3.14-examples)
+📖 Slides | 📹 Video | [🧑‍💻 Code examples](https://github.com/anze3db/python-3.14-examples)
 
 ## 18 Oct 2024
 
