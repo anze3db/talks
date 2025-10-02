@@ -1,5 +1,11 @@
 # Talks
 
+## 02 Oct 2025
+
+Free-threaded Python @ Python Lisbon Meetup
+
+[📖 Slides](https://github.com/anze3db/talks/blob/main/2025-10-02-free-threaded.pdf) | 📹 Video | [🧑‍💻 Code examples](https://github.com/anze3db/three-threaded-talk)
+
 ## 24 Jul 2025
 
 What's New in Python 3.14 @ Pycon Portugal
