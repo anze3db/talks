@@ -1,5 +1,11 @@
 # Talks
 
+## 02 Apr 2026
+
+Lazy imports @ Python Lisbon Meetup
+
+[📖 Slides](https://github.com/anze3db/talks/blob/main/2026-04-02-lazy-imports.pdf) | 📹 Video | [🧑‍💻 Code examples](https://github.com/anze3db/lazy-imports-talk)
+
 ## 02 Oct 2025
 
 Free-threaded Python @ Python Lisbon Meetup
