@@ -4,5 +4,5 @@ new slug:
     @echo "Created src/{{`date +%Y-%m-%d`}}-{{slug}}.md"
 
 # Start the Marp dev server with live reload
-serve file:
-    bunx --bun @marp-team/marp-cli --preview --watch {{file}}
+serve:
+    bunx --bun @marp-team/marp-cli --html --server --watch -I src
