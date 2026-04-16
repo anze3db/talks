@@ -28,33 +28,28 @@ TEMPLATE_START = """\
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Talks — Anže Pečar</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.slim.min.css">
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      max-width: 700px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      color: #1a1a1a;
-      line-height: 1.6;
-    }
-    h1 { margin-bottom: 0.25rem; }
-    p.subtitle { color: #666; margin-top: 0; }
-    .talk { padding: 1rem 0; border-bottom: 1px solid #eee; }
+    a { color: #1e88e5; }
+    .talk { padding: 1rem 0; border-bottom: 1px solid var(--muted-border-color); }
     .talk:last-child { border-bottom: none; }
     .talk h3 { margin: 0 0 0.15rem; }
-    .talk .event { color: #666; font-size: 0.9rem; }
+    .talk .event { color: var(--muted-color); font-size: 0.9rem; }
     .talk .links { font-size: 0.9rem; margin-top: 0.35rem; }
     .talk .links a { margin-right: 1rem; }
-    a { color: #0366d6; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    hgroup > :last-child { margin-bottom: 0; }
   </style>
 </head>
 <body>
-  <h1>Talks</h1>
-  <p class="subtitle">Anže Pečar</p>
+  <main class="container">
+    <hgroup>
+      <h1>Talks</h1>
+      <h2>Anže Pečar</h2>
+    </hgroup>
 """
 
 TEMPLATE_END = """\
+  </main>
 </body>
 </html>
 """
