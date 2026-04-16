@@ -99,6 +99,20 @@ def get_storage_client_3():
 
 ---
 
+## Make sure not to regress
+
+```toml
+[tool.ruff.flake8-tidy-imports]
+banned-module-level-imports = [
+  "snowflake",
+  "google",
+  "googleapiclient",
+  ...
+]
+```
+
+---
+
 ## PEP 810 (Python 3.15) 😍
 
 ---
