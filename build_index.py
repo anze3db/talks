@@ -143,7 +143,7 @@ def main():
             0,
             f'  <div class="talk">\n'
             f"    <h3>{title}</h3>\n"
-            f'    <div class="event">🚧 {date}</div>\n'
+            f'    <div class="event">🚧</div>\n'
             f'    <div class="links">{"".join(link_els)}</div>\n'
             f"  </div>\n",
         )
