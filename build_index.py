@@ -27,29 +27,40 @@ TEMPLATE_START = """\
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Talks — Anže Pečar</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.slim.min.css">
+  <title>Anže's Talks</title>
+  <meta name="description" content="Conferences, Meetups, and Workshops">
+  <meta name="author" content="Anže Pečar">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1.5.3/css/pico.min.css">
   <style>
-    a { color: #1e88e5; }
-    .talk { padding: 1rem 0; border-bottom: 1px solid var(--muted-border-color); }
-    .talk:last-child { border-bottom: none; }
-    .talk h3 { margin: 0 0 0.15rem; }
-    .talk .event { color: var(--muted-color); font-size: 0.9rem; }
-    .talk .links { font-size: 0.9rem; margin-top: 0.35rem; }
-    .talk .links a { margin-right: 1rem; }
-    hgroup > :last-child { margin-bottom: 0; }
+    @media (min-width: 992px) {
+      .container { max-width: 845px; }
+    }
+    section > h1, h2, h3 { margin-bottom: 10px; }
+    .extra-links { margin: 0.3rem 0; }
+    .extra-links a mark { font-size: 0.6rem; padding: 0.15rem 0.5rem; margin: 0.3rem 0; display: inline-block; border-radius: 4px; color: #fff; }
+    .extra-links .pill-video { background-color: #c62828; }
+    .extra-links .pill-code { background-color: #24292f; }
+    .extra-links .pill-pdf { background-color: #1565c0; }
+    .extra-links .pill-slides { background-color: #6a1b9a; }
   </style>
 </head>
 <body>
-  <main class="container">
+  <header class="container">
     <hgroup>
-      <h1>Talks</h1>
-      <h2>Anže Pečar</h2>
+      <h1><a href="/">Anže's Talks</a></h1>
+      <h2>Conferences, Meetups, and Workshops</h2>
     </hgroup>
+  </header>
+  <main class="container">
 """
 
 TEMPLATE_END = """\
   </main>
+  <footer class="container" style="padding-top: 0;">
+    <p>
+      <a href="https://pecar.me/">Home</a> · <a href="https://blog.pecar.me/">Blog</a>
+    </p>
+  </footer>
 </body>
 </html>
 """
@@ -100,26 +111,23 @@ def main():
             if "/blob/main/" in url and url.endswith(".pdf"):
                 stem = Path(url.split("/blob/main/")[-1]).stem
                 if stem in html_files:
-                    links.append(("Slides", html_files[stem]))
+                    links.append(("Slides", "slides", html_files[stem]))
                     used_html.add(stem)
                 if stem in pdf_files:
-                    links.append(("PDF", pdf_files[stem]))
+                    links.append(("PDF", "pdf", pdf_files[stem]))
                 else:
-                    links.append(("PDF", url))
+                    links.append(("PDF", "pdf", url))
             elif "youtube.com" in url or "youtu.be" in url:
-                links.append(("Video", url))
+                links.append(("Video", "video", url))
             elif "github.com" in url:
-                links.append(("Code", url))
+                links.append(("Code", "code", url))
 
         event_str = f"{date} — {event.strip()}" if event.strip() else date
-        links_html = "".join(f'<a href="{url}">{label}</a>' for label, url in links)
-        parts.append(
-            f'  <div class="talk">\n'
-            f"    <h3>{title.strip()}</h3>\n"
-            f'    <div class="event">{event_str}</div>\n'
-            f'    <div class="links">{links_html}</div>\n'
-            f"  </div>\n"
-        )
+        href = links[0][2] if links else ""
+        title_html = f'<a href="{href}">{title.strip()}</a>' if href else title.strip()
+        extra = [f'<a href="{url}"><mark class="pill-{cls}">{label}</mark></a>' for label, cls, url in links[1:]]
+        extra_html = f"\n<div class=\"extra-links\">{' '.join(extra)}</div>" if extra else ""
+        parts.append(f"<span>{event_str}</span>{extra_html}\n<h1>{title_html}</h1>\n")
 
     # Add Marp slides not referenced in README
     for stem in sorted(html_files.keys() - used_html, reverse=True):
@@ -130,17 +138,10 @@ def main():
         else:
             date, title = "", stem
 
-        link_els = [f'<a href="{html_files[stem]}">Slides</a>']
-        if stem in pdf_files:
-            link_els.append(f'<a href="{pdf_files[stem]}">PDF</a>')
-
+        href = html_files[stem]
         parts.insert(
             0,
-            f'  <div class="talk">\n'
-            f"    <h3>{title}</h3>\n"
-            f'    <div class="event">🚧</div>\n'
-            f'    <div class="links">{"".join(link_els)}</div>\n'
-            f"  </div>\n",
+            f"<span>🚧</span>\n<h1><a href=\"{href}\">{title}</a></h1>\n",
         )
 
     (site / "index.html").write_text(TEMPLATE_START + "\n".join(parts) + TEMPLATE_END)
