@@ -1,3 +1,6 @@
+default:
+    @just --list
+
 # Create a new Marp presentation: just new my-talk
 new slug:
     @printf -- '---\nmarp: true\ntheme: default\npaginate: true\n---\n\n# TODO\n\n**Anže Pečar**\n{{`date +%Y-%m-%d`}}\n\n---\n\n## Slide 2\n\n---\n\n## Thank you!\n' > src/{{`date +%Y-%m-%d`}}-{{slug}}.md
