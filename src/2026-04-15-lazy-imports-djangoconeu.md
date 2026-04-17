@@ -99,7 +99,10 @@ def get_storage_client_3():
 
 ---
 
-## Make sure not to regress
+## Problem 1: Make sure not to regress
+
+---
+
 
 ```toml
 [tool.ruff.flake8-tidy-imports]
@@ -113,7 +116,16 @@ banned-module-level-imports = [
 
 ---
 
-## PEP 810 (Python 3.15) 😍
+## Problem 2: Loading imports during request/response
+
+---
+
+Pre-load the heavy imports before your web worker starts (e.g. `post_worker_init` if using gunicorn).
+
+
+---
+
+## PEP 810: Explicit Lazy Imports (Python 3.15) 😍
 
 ---
 
@@ -140,13 +152,10 @@ from google.cloud.storage import Client as StorageClient
 def get_storage_client() -> StorageClient:
       return StorageClient(...)
 ```
----
-
-## Be Lazy!
 
 ---
 
-## 🤫 Lazy imports also allow circular imports
+## 🤫 Lazy imports allow circular imports
 
 ```python
 # a.py
@@ -166,3 +175,7 @@ class B:
         return A(self)
 ```
 ✅ This now imports without errors
+
+---
+
+## Be lazy!
