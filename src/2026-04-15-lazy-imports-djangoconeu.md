@@ -11,7 +11,7 @@ DjangoCon Europe 2026
 
 ---
 
-## Imports in Python can be slow
+## Imports in Python *can* be slow
 
 ---
 
@@ -42,45 +42,44 @@ python -X importtime ./manage.py check
 
 ---
 
-## Existing code
+## Eager imports
 
 ```python
 from google.cloud.storage import Client as StorageClient
 
 def get_storage_client() -> StorageClient:
-      return StorageClient(...)
+    return StorageClient(...)
 ```
 
 ---
 
-## Lazy code
+## Lazy imports
 
 ```python
 if TYPE_CHECKING:
     from google.cloud.storage import Client as StorageClient
 
 def get_storage_client() -> StorageClient:
-      from google.cloud.storage import Client as StorageClient
-      return StorageClient(...)
+    from google.cloud.storage import Client as StorageClient
+    return StorageClient(...)
 ```
 
 ---
 
-## Lazy code
+## Lazy imports
 
 ```python
-
 def get_storage_client_1():
-      from google.cloud.storage import Client as StorageClient
-      return StorageClient(...)
+    from google.cloud.storage import Client as StorageClient
+    return StorageClient(...)
 
 def get_storage_client_2():
-      from google.cloud.storage import Client as StorageClient
-      return StorageClient(...)
+    from google.cloud.storage import Client as StorageClient
+    return StorageClient(...)
 
 def get_storage_client_3():
-      from google.cloud.storage import Client as StorageClient
-      return StorageClient(...)
+    from google.cloud.storage import Client as StorageClient
+    return StorageClient(...)
 ```
 
 ---
@@ -122,25 +121,24 @@ banned-module-level-imports = [
 
 Pre-load the heavy imports before your web worker starts (e.g. `post_worker_init` if using gunicorn).
 
-
 ---
 
 ## PEP 810: Explicit Lazy Imports (Python 3.15) 😍
 
 ---
 
-## Lazy import
+## Explicit lazy imports
 
 ```python
 lazy from google.cloud.storage import Client as StorageClient
 
 def get_storage_client() -> StorageClient:
-      return StorageClient(...)
+    return StorageClient(...)
 ```
 
 ---
 
-## Super lazy import
+## Implicit lazy imports
 
 ```bash
 python -X lazy_imports=all
@@ -150,7 +148,7 @@ python -X lazy_imports=all
 from google.cloud.storage import Client as StorageClient
 
 def get_storage_client() -> StorageClient:
-      return StorageClient(...)
+    return StorageClient(...)
 ```
 
 ---
