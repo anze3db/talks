@@ -78,11 +78,73 @@ def date_to_iso(date_str):
     return f"{year}-{m}-{day.zfill(2)}"
 
 
+MONTH_ABBR = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+AUTO_START = "<!-- AUTO-TALKS-START -->"
+AUTO_END = "<!-- AUTO-TALKS-END -->"
+
+
+def extract_metadata(md_path):
+    """Return (title, frontmatter_dict) from a Marp source file."""
+    lines = md_path.read_text(encoding="utf-8").splitlines()
+    meta = {}
+    i = 0
+    if lines and lines[0].strip() == "---":
+        i = 1
+        while i < len(lines) and lines[i].strip() != "---":
+            if ":" in lines[i]:
+                k, v = lines[i].split(":", 1)
+                meta[k.strip()] = v.strip()
+            i += 1
+        i += 1
+    title = md_path.stem
+    for line in lines[i:]:
+        if line.startswith("# "):
+            title = line[2:].strip()
+            break
+    return title, meta
+
+
+def sync_readme(readme_path, src_dir, site_dir):
+    """Insert Marp talks that aren't yet referenced in README between markers."""
+    readme = readme_path.read_text(encoding="utf-8")
+    if AUTO_START not in readme or AUTO_END not in readme:
+        return readme
+
+    new_sections = []
+    for md in sorted(src_dir.glob("*.md"), reverse=True):
+        stem = md.stem
+        m = re.match(r"(\d{4})-(\d{2})-(\d{2})-", stem)
+        if not m:
+            continue
+        if not (site_dir / f"{stem}.html").exists():
+            continue
+        year, mo, day = m.groups()
+        date_str = f"{day} {MONTH_ABBR[int(mo)]} {year}"
+        title, meta = extract_metadata(md)
+        event = meta.get("event", "")
+        desc = f"{title} @ {event}" if event else title
+        if meta.get("lightning", "").lower() in ("true", "yes"):
+            desc = f"⚡ {desc}"
+        url = f"https://talks.pecar.me/{stem}.html"
+        new_sections.append(f"## {date_str}\n\n{desc}\n\n[📖 Slides]({url}) | 📹 Video\n")
+
+    if not new_sections:
+        return readme
+
+    before = readme.split(AUTO_START)[0]
+    after = readme.split(AUTO_END, 1)[1]
+    block = f"{AUTO_START}\n\n" + "\n".join(new_sections) + f"\n{AUTO_END}"
+    updated = before + block + after
+    readme_path.write_text(updated, encoding="utf-8")
+    return updated
+
+
 def main():
     site = Path("_site")
-    readme = Path("README.md").read_text(encoding="utf-8")
+    readme = sync_readme(Path("README.md"), Path("src"), site)
 
-    html_files = {f.stem: f.name for f in site.glob("*.html") if f.stem != "index"}
+    src_stems = {f.stem for f in Path("src").glob("*.md")}
+    html_files = {f.stem: f.name for f in site.glob("*.html") if f.stem != "index" and f.stem in src_stems}
     pdf_files = {f.stem: f.name for f in site.glob("*.pdf")}
     used_html = set()
 
@@ -117,6 +179,13 @@ def main():
                     links.append(("PDF", "pdf", pdf_files[stem]))
                 else:
                     links.append(("PDF", "pdf", url))
+            elif url.endswith(".html"):
+                stem = Path(url).stem
+                if stem in html_files:
+                    links.append(("Slides", "slides", html_files[stem]))
+                    used_html.add(stem)
+                else:
+                    links.append(("Slides", "slides", url))
             elif "youtube.com" in url or "youtu.be" in url:
                 links.append(("Video", "video", url))
             elif "github.com" in url:

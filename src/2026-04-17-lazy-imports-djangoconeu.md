@@ -2,6 +2,8 @@
 marp: true
 theme: default
 paginate: false
+event: DjangoCon Europe Athens
+lightning: true
 ---
 
 # Speeding Up Django Startup Times with Lazy Imports

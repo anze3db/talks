@@ -1,5 +1,21 @@
 # Talks
 
+<!-- AUTO-TALKS-START -->
+
+## 11 May 2026
+
+How to Safely Install Python Packages
+
+[📖 Slides](https://talks.pecar.me/2026-05-11-supply-chain-attacks.html) | 📹 Video
+
+## 17 Apr 2026
+
+⚡ Speeding Up Django Startup Times with Lazy Imports @ DjangoCon Europe Athens
+
+[📖 Slides](https://talks.pecar.me/2026-04-17-lazy-imports-djangoconeu.html) | 📹 Video
+
+<!-- AUTO-TALKS-END -->
+
 ## 02 Apr 2026
 
 Lazy imports @ Python Lisbon Meetup
