@@ -2,11 +2,11 @@
 
 <!-- AUTO-TALKS-START -->
 
-## 11 May 2026
+## 06 May 2026
 
-How to Safely Install Python Packages
+Sentinel Values @ Python Lisbon Meetup
 
-[📖 Slides](https://talks.pecar.me/2026-05-11-supply-chain-attacks.html) | 📹 Video
+[📖 Slides](https://talks.pecar.me/2026-05-06-sentinel-values.html) | 📹 Video
 
 ## 17 Apr 2026
 

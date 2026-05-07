@@ -2,6 +2,7 @@
 marp: true
 theme: default
 paginate: true
+event: Python Lisbon Meetup
 ---
 
 # Sentinel Values
