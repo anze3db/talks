@@ -8,7 +8,7 @@ paginate: true
 ## Python Lisbon Meetup
 
 **Anže Pečar**
-May 6, 2026
+May 7, 2026
 
 ---
 
@@ -19,6 +19,15 @@ May 6, 2026
 class Token:
     value: str                    # always a string
     expires_at: datetime | None   # None means "never expires"
+```
+---
+
+## Update it
+
+```python
+token = Token(value="hi", expires_at=datetime.now())
+update(token, expires_at=datetime.now()) # value not updated
+update(token, value="new_value")         # expires_at not updated
 ```
 
 ---
@@ -44,7 +53,7 @@ def update(
 `expires_at` is broken:
 
 ```python
-update(t, expires_at=None)   # "never expires"? or "don't touch"?
+update(t, expires_at=None)   # "never expires"? or "keep" existing value?
 ```
 
 ---
@@ -81,8 +90,16 @@ Ugly repr, no real type, breaks on pickle.
 ## PEP 661 - Python 3.15a8
 
 ```python
-from builtins import sentinel
 
+KEEP = sentinel('KEEP')
+
+```
+
+---
+
+## PEP 661 - Python 3.15a8
+
+```python
 
 KEEP = sentinel('KEEP')
 
@@ -99,7 +116,7 @@ def update(
 
 ---
 
-Clean repr. Survives pickling. Standard.
+Clean repr. No issues with type annotation. Survives pickling.
 
 ---
 
