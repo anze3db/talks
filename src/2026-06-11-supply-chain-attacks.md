@@ -23,7 +23,8 @@ NOTE for PDF export: marp needs --allow-local-files for the chart images (serve/
 
 
 **Anže Pečar**
-Python Lisbon Meetup — June 11, 2026
+Python Lisbon Meetup
+*June 11, 2026*
 
 <!--
 Opener: "Tonight I want to scare you a little, then make you feel better. We'll look
@@ -282,7 +283,7 @@ ACTIONABLE: passkeys/WebAuthn over TOTP; Trusted Publishing so there's no token 
 
 ---
 
-# Trivy hack cackaded to PyPI
+# Trivy hack cascaded to PyPI
 
 `litellm` 1.82.7 & 1.82.8 shipped a `litellm_init.pth` that ran on **Python startup**.
 
