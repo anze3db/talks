@@ -314,8 +314,9 @@ Sources:
 
 A file in `site-packages`. Each line either:
 
- * path to be added to `sys.path` at startup
- * import line that gets execuded with `exec()`
+A path to be added to `sys.path` at startup
+An import line that gets execuded with `exec()`
+
 
 ```python
 /opt/mycompany/shared-libs
