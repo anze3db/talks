@@ -10,7 +10,7 @@ Supply Chain Attacks @ Python Lisbon Meetup
 
 ## 06 May 2026
 
-Sentinel Values @ Python Lisbon Meetup
+⚡ Sentinel Values @ Python Lisbon Meetup
 
 [📖 Slides](https://talks.pecar.me/2026-05-06-sentinel-values.html) | 📹 Video
 

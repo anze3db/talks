@@ -594,15 +594,14 @@ cooldown (with overrides), use AI. A config file and a habit.
 
 ---
 
-`$ pip install` **safely**
+<img src="assets/qr-talks.png" style="height:240px;float:right;margin:0.5em 0 0 1.5em;" />
 
-# Don't trust. Verify.
 
-Thank you — questions?
+# Questions?
 
-<img src="assets/qr-talks.png" style="height:230px;display:block;margin:0.2em auto 0;" />
+slides → `talks.pecar.me`
 
-slides → `talks.pecar.me`  ·  blog → `blog.pecar.me/how-to-safely-update-your-dependencies`
+blog → `blog.pecar.me/how-to-safely-update-your-dependencies`
 
 <!--
 TRANSITION: land "Don't trust. Verify." — then STOP. Let it sit before Q&A.
