@@ -2,6 +2,12 @@
 
 <!-- AUTO-TALKS-START -->
 
+## 11 Jun 2026
+
+Supply Chain Attacks @ Python Lisbon Meetup
+
+[📖 Slides](https://talks.pecar.me/2026-06-11-supply-chain-attacks.html) | 📹 Video
+
 ## 06 May 2026
 
 Sentinel Values @ Python Lisbon Meetup
