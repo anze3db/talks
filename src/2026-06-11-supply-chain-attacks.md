@@ -546,12 +546,12 @@ Sources:
 
 ---
 
-# AI is making this get wrose faster
+# AI is making things worse
 
 <img src="assets/ai-time-to-exploit.png" style="height:300px;display:block;margin:0.2em auto 0;" />
-<img src="assets/ai-exploit-milestones.png" style="height:116px;display:block;margin:0.2em auto 0;" />
+<!-- <img src="assets/ai-exploit-milestones.png" style="height:116px;display:block;margin:0.2em auto 0;" /> -->
 
-**2.3 years → 22 hours** to first exploit, and shrinking. · Graphs: `zerodayclock.com`
+**2.3 years → 22 hours** to first exploit, and shrinking. · `zerodayclock.com`
 
 <!--
 TRANSITION: "One last shift — and it cuts both ways."
